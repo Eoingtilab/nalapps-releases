@@ -1,0 +1,49 @@
+{
+  "schema": "nalapps-staged-addons/v1",
+  "products": [
+    {
+      "product_id": "nalapps-notifications",
+      "title": "NalApps Notifications",
+      "version": "1.0.0-rc.1",
+      "version_tag": "notifications-v1.0.0-rc.1",
+      "channel_tag": "notifications-current",
+      "asset": "nalapps-notifications.zip",
+      "plugin_folder": "nalapps-notifications",
+      "main_file": "nalapps-notifications.php",
+      "sha256": "7961362e07f21d3bfdc46a4a07e67fbaad8f03ddce82efb740ee1bf2f39cb225"
+    },
+    {
+      "product_id": "nalapps-easy-smtp",
+      "title": "NalApps Easy SMTP",
+      "version": "1.0.0-rc.1",
+      "version_tag": "easy-smtp-v1.0.0-rc.1",
+      "channel_tag": "easy-smtp-current",
+      "asset": "nalapps-easy-smtp.zip",
+      "plugin_folder": "nalapps-easy-smtp",
+      "main_file": "nalapps-easy-smtp.php",
+      "sha256": "9ac91060468912e736f323736a12c3aec4a48be439a68ce0dafe3d1644db1c31"
+    },
+    {
+      "product_id": "nalapps-popup-slider",
+      "title": "NalApps Popup Slider",
+      "version": "1.0.0-rc.1",
+      "version_tag": "popup-slider-v1.0.0-rc.1",
+      "channel_tag": "popup-slider-current",
+      "asset": "nalapps-popup-slider.zip",
+      "plugin_folder": "nalapps-popup-slider",
+      "main_file": "nalapps-popup-slider.php",
+      "sha256": "fe8796289ddf5b0ca42d3963e0876e535105dbfb238525a02a39550529cbd43e"
+    },
+    {
+      "product_id": "nalapps-vendorops",
+      "title": "NalApps VendorOps",
+      "version": "1.0.0-rc.1",
+      "version_tag": "vendorops-v1.0.0-rc.1",
+      "channel_tag": "vendorops-current",
+      "asset": "nalapps-vendorops.zip",
+      "plugin_folder": "nalapps-vendorops",
+      "main_file": "nalapps-vendorops.php",
+      "sha256": "f5064c4270be7c9e263c42ec3517b837d1a2a8ee1b4816a456c5695a447a29f9"
+    }
+  ]
+}
