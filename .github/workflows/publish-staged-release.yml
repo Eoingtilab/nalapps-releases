@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'staging/*.zip.b64'
-      - 'staging/*.release.env'
+      - 'staging/core-artifact-url.txt'
+      - 'staging/core.release.env'
       - '.github/workflows/publish-staged-release.yml'
   workflow_dispatch:
 
@@ -22,6 +22,7 @@ jobs:
       - name: Load release metadata
         run: |
           test -f staging/core.release.env
+          test -f staging/core-artifact-url.txt
           set -a
           source staging/core.release.env
           set +a
@@ -29,9 +30,15 @@ jobs:
           echo "ASSET_NAME=$ASSET_NAME" >> "$GITHUB_ENV"
           echo "RELEASE_TITLE=$RELEASE_TITLE" >> "$GITHUB_ENV"
 
-      - name: Decode release asset
+      - name: Download verified Core CI artifact
         run: |
-          base64 --decode staging/core.zip.b64 > "$ASSET_NAME"
+          ARTIFACT_URL=$(cat staging/core-artifact-url.txt)
+          curl --fail --location --silent --show-error "$ARTIFACT_URL" --output core-artifact.zip
+          unzip -t core-artifact.zip
+          mkdir artifact
+          unzip -q core-artifact.zip -d artifact
+          test -f "artifact/$ASSET_NAME"
+          cp "artifact/$ASSET_NAME" "$ASSET_NAME"
           unzip -t "$ASSET_NAME"
           sha256sum "$ASSET_NAME" > SHA256SUMS-nalapps-commerce-core.txt
           unzip -l "$ASSET_NAME"
@@ -47,6 +54,7 @@ jobs:
           - Plugin folder: nalapps-commerce-core
           - Main file: nalapps-commerce-core.php
           - Asset: ${ASSET_NAME}
+          - Source CI artifact verified before publication
           EOF
 
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
