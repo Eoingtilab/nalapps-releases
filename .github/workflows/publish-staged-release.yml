@@ -1,6 +1,11 @@
 name: Publish staged product release
 
 on:
+  pull_request:
+    paths:
+      - 'staging/*.zip.b64'
+      - 'staging/*.release.env'
+      - '.github/workflows/publish-staged-release.yml'
   push:
     branches:
       - main
@@ -14,7 +19,7 @@ permissions:
   contents: write
 
 jobs:
-  publish:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,11 +61,53 @@ jobs:
             "sha256": "$EXPECTED_SHA256"
           }
           EOF
+          python -m json.tool version.json >/dev/null
+
+      - name: Upload validated release payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: staged-core-release
+          path: |
+            ${{ env.ASSET_NAME }}
+            SHA256SUMS-nalapps-commerce-core.txt
+            version.json
+          if-no-files-found: error
+
+  publish:
+    needs: validate
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load release metadata
+        run: |
+          set -a
+          source staging/core.release.env
+          set +a
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "VERSION_TAG=$VERSION_TAG" >> "$GITHUB_ENV"
+          echo "CHANNEL_TAG=$CHANNEL_TAG" >> "$GITHUB_ENV"
+          echo "ASSET_NAME=$ASSET_NAME" >> "$GITHUB_ENV"
+          echo "RELEASE_TITLE=$RELEASE_TITLE" >> "$GITHUB_ENV"
+          echo "EXPECTED_SHA256=$EXPECTED_SHA256" >> "$GITHUB_ENV"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: staged-core-release
+          path: release-payload
+
+      - name: Revalidate payload
+        run: |
+          cd release-payload
+          echo "$EXPECTED_SHA256  $ASSET_NAME" | sha256sum --check --strict
+          unzip -t "$ASSET_NAME"
 
       - name: Publish immutable version release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          cd release-payload
           cat > version-release-notes.md <<EOF
           # ${RELEASE_TITLE}
 
@@ -90,6 +137,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          cd release-payload
           cat > channel-release-notes.md <<EOF
           # NalApps Commerce Core Current
 
