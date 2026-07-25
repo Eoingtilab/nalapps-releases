@@ -1,0 +1,17 @@
+{
+  "schema": "nalapps-staged-addons/v1",
+  "products": [
+    {
+      "product_id": "nalapps-wp-childtheme",
+      "title": "NalApps Child Theme",
+      "version": "1.0.1",
+      "version_tag": "wp-childtheme-v1.0.1",
+      "channel_tag": "wp-childtheme-current",
+      "release_type": "stable",
+      "asset": "nalapps-childtheme-1.0.1.zip",
+      "plugin_folder": "nalapps-childtheme",
+      "main_file": "nalapps-childtheme.php",
+      "sha256": "1dcf92bf3c859ac3e18decf457b079a8ebaebf92e880eea084ef8fdc8e9a8073"
+    }
+  ]
+}
