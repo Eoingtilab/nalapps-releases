@@ -1,4 +1,4 @@
-name: Publish staged Commerce addons
+name: Publish staged NalApps products
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-staged-commerce-addons
+  group: publish-staged-nalapps-products
   cancel-in-progress: false
 
 jobs:
@@ -41,6 +41,13 @@ jobs:
             main_file=$(jq -r '.main_file' <<<"$row")
             expected=$(jq -r '.sha256' <<<"$row")
             title=$(jq -r '.title' <<<"$row")
+            release_type=$(jq -r '.release_type // "prerelease"' <<<"$row")
+            create_flags=()
+            edit_flags=(--prerelease=false)
+            if [ "$release_type" != "stable" ]; then
+              create_flags+=(--prerelease)
+              edit_flags=(--prerelease)
+            fi
             shopt -s nullglob
             parts=(staging/addons/${id}.part*.b64)
             test "${#parts[@]}" -gt 0
@@ -52,7 +59,7 @@ jobs:
             checksum="release-payload/SHA256SUMS-${id}.txt"
             echo "$expected  $asset" > "$checksum"
             version_json="release-payload/${id}-version.json"
-            jq -n --arg product_id "$id" --arg version "$version" --arg version_tag "$version_tag" --arg channel_tag "$channel_tag" --arg asset "$asset" --arg sha256 "$expected" '{product_id:$product_id,version:$version,version_tag:$version_tag,channel_tag:$channel_tag,asset:$asset,sha256:$sha256}' > "$version_json"
+            jq -n --arg product_id "$id" --arg version "$version" --arg version_tag "$version_tag" --arg channel_tag "$channel_tag" --arg asset "$asset" --arg sha256 "$expected" --arg release_type "$release_type" '{product_id:$product_id,version:$version,version_tag:$version_tag,channel_tag:$channel_tag,asset:$asset,sha256:$sha256,release_type:$release_type}' > "$version_json"
             notes="release-payload/${id}-notes.md"
             printf '# %s\n\nVersion: %s\n\nSHA-256: %s\n' "$title" "$version" "$expected" > "$notes"
             if gh release view "$version_tag" >/dev/null 2>&1; then
@@ -60,15 +67,15 @@ jobs:
               gh release download "$version_tag" --pattern "SHA256SUMS-${id}.txt" --dir "release-payload/existing-$id"
               test "$(awk '{print $1}' "release-payload/existing-$id/SHA256SUMS-${id}.txt")" = "$expected"
             else
-              gh release create "$version_tag" "release-payload/$asset" "$checksum" "$version_json" --title "$title $version" --notes-file "$notes" --prerelease
+              gh release create "$version_tag" "release-payload/$asset" "$checksum" "$version_json" --title "$title $version" --notes-file "$notes" "${create_flags[@]}"
             fi
             if gh release view "$channel_tag" >/dev/null 2>&1; then
               gh release upload "$channel_tag" "release-payload/$asset" "$checksum" "$version_json" --clobber
-              gh release edit "$channel_tag" --title "$title Current ($version)" --notes-file "$notes" --prerelease
+              gh release edit "$channel_tag" --title "$title Current ($version)" --notes-file "$notes" "${edit_flags[@]}"
             else
-              gh release create "$channel_tag" "release-payload/$asset" "$checksum" "$version_json" --title "$title Current ($version)" --notes-file "$notes" --prerelease
+              gh release create "$channel_tag" "release-payload/$asset" "$checksum" "$version_json" --title "$title Current ($version)" --notes-file "$notes" "${create_flags[@]}"
             fi
-            jq -n --arg product_id "$id" --arg version "$version" --arg version_tag "$version_tag" --arg channel_tag "$channel_tag" --arg asset "$asset" --arg sha256 "$expected" --arg workflow_run_id "$GITHUB_RUN_ID" '{product_id:$product_id,version:$version,version_tag:$version_tag,channel_tag:$channel_tag,asset:$asset,sha256:$sha256,workflow_run_id:$workflow_run_id}' > "releases/published-${id}-current.json"
+            jq -n --arg product_id "$id" --arg version "$version" --arg version_tag "$version_tag" --arg channel_tag "$channel_tag" --arg asset "$asset" --arg sha256 "$expected" --arg release_type "$release_type" --arg workflow_run_id "$GITHUB_RUN_ID" '{product_id:$product_id,version:$version,version_tag:$version_tag,channel_tag:$channel_tag,asset:$asset,sha256:$sha256,release_type:$release_type,workflow_run_id:$workflow_run_id}' > "releases/published-${id}-current.json"
           done
       - name: Record publications
         run: |
@@ -77,5 +84,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add releases/published-*-current.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Record published Commerce addon releases'
+          git commit -m 'Record published NalApps product releases'
           git push origin HEAD:main
