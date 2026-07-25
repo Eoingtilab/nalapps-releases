@@ -42,6 +42,7 @@ jobs:
             expected=$(jq -r '.sha256' <<<"$row")
             title=$(jq -r '.title' <<<"$row")
             release_type=$(jq -r '.release_type // "prerelease"' <<<"$row")
+            payload_prefix=$(jq -r '.payload_prefix // .product_id' <<<"$row")
             create_flags=()
             edit_flags=(--prerelease=false)
             if [ "$release_type" != "stable" ]; then
@@ -49,7 +50,7 @@ jobs:
               edit_flags=(--prerelease)
             fi
             shopt -s nullglob
-            parts=(staging/addons/${id}.part*.b64)
+            parts=(staging/addons/${payload_prefix}.part*.b64)
             test "${#parts[@]}" -gt 0
             cat "${parts[@]}" | base64 --decode > "release-payload/$asset"
             echo "$expected  release-payload/$asset" | sha256sum --check --strict
