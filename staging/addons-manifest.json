@@ -1,5 +1,6 @@
 {
   "schema": "nalapps-staged-addons/v1",
+  "build_revision": 2,
   "products": [
     {
       "product_id": "nalapps-wp-childtheme",
