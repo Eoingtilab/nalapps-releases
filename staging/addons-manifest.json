@@ -4,15 +4,15 @@
     {
       "product_id": "nalapps-wp-childtheme",
       "title": "NalApps Child Theme",
-      "version": "1.0.2",
-      "version_tag": "wp-childtheme-v1.0.2",
+      "version": "1.0.3",
+      "version_tag": "wp-childtheme-v1.0.3",
       "channel_tag": "wp-childtheme-current",
       "release_type": "stable",
-      "payload_prefix": "nalapps-wp-childtheme-1.0.2",
-      "asset": "nalapps-childtheme-1.0.2.zip",
+      "payload_prefix": "nalapps-wp-childtheme-1.0.3",
+      "asset": "nalapps-childtheme-1.0.3.zip",
       "plugin_folder": "nalapps-childtheme",
       "main_file": "nalapps-childtheme.php",
-      "sha256": "d0feb4bd8f23e6b50b7af6c4ee3f25687415308b18ef7566f5e61c4e6c137235"
+      "sha256": "35a4628538671b32968117cc92423c9840fe23df2fc685fbb4979efd716426a5"
     }
   ]
 }
