@@ -55,7 +55,7 @@ jobs:
             echo "$expected  release-payload/$asset" | sha256sum --check --strict
             unzip -t "release-payload/$asset"
             test "$(unzip -Z1 "release-payload/$asset" | cut -d/ -f1 | sort -u)" = "$folder"
-            unzip -p "release-payload/$asset" "$folder/$main_file" | grep -F "Version: $version"
+            unzip -p "release-payload/$asset" "$folder/$main_file" | grep -Eq "^[[:space:]]*\\*[[:space:]]*Version:[[:space:]]*${version}[[:space:]]*$"
             checksum="release-payload/SHA256SUMS-${id}.txt"
             echo "$expected  $asset" > "$checksum"
             version_json="release-payload/${id}-version.json"
