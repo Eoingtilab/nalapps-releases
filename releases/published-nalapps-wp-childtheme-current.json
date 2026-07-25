@@ -1,0 +1,10 @@
+{
+  "product_id": "nalapps-wp-childtheme",
+  "version": "1.0.3",
+  "version_tag": "wp-childtheme-v1.0.3",
+  "channel_tag": "wp-childtheme-current",
+  "asset": "nalapps-childtheme-1.0.3.zip",
+  "sha256": "35a4628538671b32968117cc92423c9840fe23df2fc685fbb4979efd716426a5",
+  "release_type": "stable",
+  "workflow_run_id": "30146512806"
+}
