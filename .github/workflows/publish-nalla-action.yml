@@ -1,0 +1,122 @@
+name: Publish 날라액션
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'requests/nalla-action-*.json'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout distribution repository
+        uses: actions/checkout@v4
+
+      - name: Load release request
+        id: request
+        shell: pwsh
+        run: |
+          $requestFile = Get-ChildItem '.\requests\nalla-action-*.json' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+          if (-not $requestFile) { throw '날라액션 release request was not found.' }
+          $request = Get-Content $requestFile.FullName -Raw | ConvertFrom-Json
+          "source_repo=$($request.source_repository)" >> $env:GITHUB_OUTPUT
+          "source_tag=$($request.source_tag)" >> $env:GITHUB_OUTPUT
+          "release_tag=$($request.release_tag)" >> $env:GITHUB_OUTPUT
+          "artifact=$($request.artifact_name)" >> $env:GITHUB_OUTPUT
+          "checksum=$($request.checksum_name)" >> $env:GITHUB_OUTPUT
+          "version=$($request.version)" >> $env:GITHUB_OUTPUT
+
+      - name: Wait for verified source Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $sourceRepo = '${{ steps.request.outputs.source_repo }}'
+          $sourceTag = '${{ steps.request.outputs.source_tag }}'
+          $artifact = '${{ steps.request.outputs.artifact }}'
+          $checksum = '${{ steps.request.outputs.checksum }}'
+
+          $ready = $false
+          for ($attempt = 1; $attempt -le 30; $attempt++) {
+            Write-Host "Checking source release attempt $attempt/30..."
+            $raw = gh release view $sourceTag --repo $sourceRepo --json assets,url 2>$null
+            if ($LASTEXITCODE -eq 0 -and $raw) {
+              $release = $raw | ConvertFrom-Json
+              $names = @($release.assets | ForEach-Object { $_.name })
+              if ($names -contains $artifact -and $names -contains $checksum) {
+                $ready = $true
+                Write-Host "Verified source release found: $($release.url)"
+                break
+              }
+            }
+            Start-Sleep -Seconds 10
+          }
+          if (-not $ready) { throw 'Verified source release did not become available within 5 minutes.' }
+
+      - name: Download source release assets
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory -Force '.\dist' | Out-Null
+          gh release download '${{ steps.request.outputs.source_tag }}' `
+            --repo '${{ steps.request.outputs.source_repo }}' `
+            --pattern '${{ steps.request.outputs.artifact }}' `
+            --pattern '${{ steps.request.outputs.checksum }}' `
+            --dir '.\dist'
+
+      - name: Verify SHA-256 and package
+        shell: pwsh
+        run: |
+          $zip = Join-Path '.\dist' '${{ steps.request.outputs.artifact }}'
+          $checksumFile = Join-Path '.\dist' '${{ steps.request.outputs.checksum }}'
+          if (-not (Test-Path $zip)) { throw 'Distribution ZIP is missing.' }
+          if (-not (Test-Path $checksumFile)) { throw 'Checksum file is missing.' }
+
+          $line = (Get-Content $checksumFile -Raw).Trim()
+          $expected = ($line -split '\s+')[0].ToLowerInvariant()
+          $actual = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($expected -ne $actual) { throw "SHA-256 mismatch. expected=$expected actual=$actual" }
+          if ((Get-Item $zip).Length -lt 1MB) { throw 'Distribution ZIP is unexpectedly small.' }
+          Write-Host "SHA-256 verified: $actual"
+
+      - name: Create or update official distribution Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = '${{ steps.request.outputs.release_tag }}'
+          $zip = Join-Path '.\dist' '${{ steps.request.outputs.artifact }}'
+          $checksum = Join-Path '.\dist' '${{ steps.request.outputs.checksum }}'
+          $notes = '.\products\utility-action\RELEASE_NOTES_v1.0.0.md'
+
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload $tag $zip $checksum --clobber
+          }
+          else {
+            gh release create $tag $zip $checksum `
+              --title '날라액션 v1.0.0' `
+              --notes-file $notes `
+              --latest
+          }
+
+      - name: Final distribution assertion
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = '${{ steps.request.outputs.release_tag }}'
+          $artifact = '${{ steps.request.outputs.artifact }}'
+          $checksum = '${{ steps.request.outputs.checksum }}'
+          $release = gh release view $tag --json tagName,assets,url | ConvertFrom-Json
+          $names = @($release.assets | ForEach-Object { $_.name })
+          if ($release.tagName -ne $tag) { throw 'Distribution tag mismatch.' }
+          if ($names -notcontains $artifact) { throw 'Distribution ZIP is missing from official release.' }
+          if ($names -notcontains $checksum) { throw 'Checksum is missing from official release.' }
+          Write-Host "Official release verified: $($release.url)"
