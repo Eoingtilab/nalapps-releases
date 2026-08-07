@@ -1,0 +1,14 @@
+{
+  "product": "날라액션",
+  "product_id": "utility-action",
+  "version": "1.0.0",
+  "source_repository": "Eoingtilab/nalapps-action",
+  "source_tag": "v1.0.0",
+  "release_repository": "Eoingtilab/nalapps-releases",
+  "release_tag": "utility-action-v1.0.0",
+  "artifact_name": "NallaAction-v1.0.0-win-x64.zip",
+  "checksum_name": "NallaAction-v1.0.0-SHA256.txt",
+  "edd_product_name": "날라액션",
+  "edd_version": "1.0.0",
+  "requested_channel": "stable"
+}
