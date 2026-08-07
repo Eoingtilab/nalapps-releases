@@ -1,0 +1,12 @@
+{
+  "product_id": "nalla-macro",
+  "version": "1.1.0",
+  "version_tag": "nalla-macro-v1.1.0",
+  "asset": "NallaMacro-v1.1.0-win-x64.zip",
+  "sha256": "a48cc7339b59491f2f88b48ca49897d24d8889c1ce9e5321fc9d4024278f76a4",
+  "release_type": "stable",
+  "source_repo": "Eoingtilab/nalapps-macro",
+  "source_commit": "0ff06e0db6d252f94e1fa127fc2dc7cbd7f984aa",
+  "source_ci_run_id": "31190691107",
+  "release_workflow_run_id": "31192104584"
+}
