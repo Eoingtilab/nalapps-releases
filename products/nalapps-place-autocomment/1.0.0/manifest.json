@@ -1,0 +1,13 @@
+{
+  "product_id": "nalapps-place-autocomment",
+  "product_name": "NallaReview",
+  "version": "1.0.0",
+  "channel": "stable",
+  "platform": "windows-x64",
+  "source_repository": "Eoingtilab/nalapps-palce-autocomment",
+  "source_commit": "68f2c94dec67a34123e963ea88a79ef8ed541524",
+  "distribution_status": "pending_windows_build",
+  "expected_asset": "NallaReview-1.0.0-win-x64.zip",
+  "asset_sha256": null,
+  "notes": "Source v1.0.0 is committed. Public binary asset must be produced by the Windows Release build and self-test before publication. Full source ZIP is intentionally not published in nalapps-releases."
+}
