@@ -1,0 +1,181 @@
+name: publish-nalla-macro
+
+on:
+  push:
+    paths:
+      - 'staging/nalla-macro-release.json'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read release manifest
+        shell: pwsh
+        run: |
+          $cfg = Get-Content 'staging/nalla-macro-release.json' -Raw | ConvertFrom-Json
+          if (-not $cfg.version -or -not $cfg.source_repo -or -not $cfg.source_commit -or -not $cfg.tag -or -not $cfg.asset) {
+            throw 'Release manifest is missing required fields.'
+          }
+          "VERSION=$($cfg.version)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "SOURCE_REPO=$($cfg.source_repo)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "SOURCE_COMMIT=$($cfg.source_commit)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "SOURCE_CI_RUN_ID=$($cfg.source_ci_run_id)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "TAG=$($cfg.tag)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ASSET=$($cfg.asset)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Checkout exact verified source commit
+        shell: pwsh
+        run: |
+          git clone "https://github.com/$env:SOURCE_REPO.git" source
+          Set-Location source
+          git checkout --detach $env:SOURCE_COMMIT
+          $actual = (git rev-parse HEAD).Trim()
+          if ($actual -ne $env:SOURCE_COMMIT) {
+            throw "Source commit mismatch: $actual"
+          }
+
+      - name: Restore application and all tests
+        shell: pwsh
+        run: |
+          dotnet restore source/src/NalApps.Macro/NalApps.Macro.csproj
+          dotnet restore source/tests/NalApps.Macro.Tests/NalApps.Macro.Tests.csproj
+          dotnet restore source/tests/NalApps.Macro.UiSmoke/NalApps.Macro.UiSmoke.csproj
+          dotnet restore source/tests/NalApps.Macro.Acceptance/NalApps.Macro.Acceptance.csproj
+
+      - name: Build with warnings as errors
+        shell: pwsh
+        run: |
+          dotnet build source/src/NalApps.Macro/NalApps.Macro.csproj -c Release --no-restore -warnaserror
+          dotnet build source/tests/NalApps.Macro.Tests/NalApps.Macro.Tests.csproj -c Release --no-restore -warnaserror
+          dotnet build source/tests/NalApps.Macro.UiSmoke/NalApps.Macro.UiSmoke.csproj -c Release --no-restore -warnaserror
+          dotnet build source/tests/NalApps.Macro.Acceptance/NalApps.Macro.Acceptance.csproj -c Release --no-restore -warnaserror
+
+      - name: Run full regression and acceptance suite
+        shell: pwsh
+        run: |
+          dotnet run --project source/tests/NalApps.Macro.Tests/NalApps.Macro.Tests.csproj -c Release --no-build
+          dotnet run --project source/tests/NalApps.Macro.UiSmoke/NalApps.Macro.UiSmoke.csproj -c Release --no-build
+          dotnet run --project source/tests/NalApps.Macro.Acceptance/NalApps.Macro.Acceptance.csproj -c Release --no-build
+
+      - name: Publish verified portable executable
+        shell: pwsh
+        run: |
+          $publishDir = Join-Path $env:RUNNER_TEMP 'NallaMacro-publish'
+          dotnet publish source/src/NalApps.Macro/NalApps.Macro.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            --no-restore `
+            -p:PublishSingleFile=true `
+            -p:DebugType=embedded `
+            -o $publishDir
+          $exe = Join-Path $publishDir 'NallaMacro.exe'
+          if (-not (Test-Path $exe)) {
+            throw 'NallaMacro.exe was not created.'
+          }
+          Compress-Archive -Path "$publishDir\*" -DestinationPath $env:ASSET -Force
+          $sha = (Get-FileHash $env:ASSET -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$sha  $env:ASSET" | Set-Content 'SHA256SUMS.txt' -Encoding ascii
+          "SHA256=$sha" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Create stable GitHub release and tag
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if (gh release view $env:TAG --repo $env:GITHUB_REPOSITORY 2>$null) {
+            throw "Release tag already exists: $env:TAG"
+          }
+          @"
+          # 날라매크로 v$env:VERSION
+
+          Windows용 무료 키보드·마우스 매크로 유틸리티 정식 안정화 버전입니다.
+
+          ## 주요 기능
+          - 키보드 입력 및 키 누르기/유지
+          - 마우스 이동·클릭·더블클릭·휠
+          - 횟수 지정 및 시간 지정 반복
+          - 초 단위 대기와 실행 단계 카운트다운
+          - 단계 복사·삭제·순서 변경·선택 단계 아래 삽입
+          - 매크로 저장 및 불러오기
+          - 실행 중 일시정지·중지 및 긴급 중지 단축키
+          - 날라매크로 전용 인트로 및 애플리케이션 아이콘
+
+          ## 검증
+          - Windows Release 빌드 및 warnings-as-errors 통과
+          - Core regression tests 통과
+          - WPF lifecycle smoke tests 통과
+          - ISO/IEC/IEEE 29119 기반 기능 acceptance tests 통과
+          - Self-contained single-file publish 검증
+
+          Source: $env:SOURCE_REPO@$env:SOURCE_COMMIT
+          Source CI run: $env:SOURCE_CI_RUN_ID
+          "@ | Set-Content 'release-notes.md' -Encoding utf8
+
+          gh release create $env:TAG `
+            $env:ASSET `
+            'SHA256SUMS.txt' `
+            --repo $env:GITHUB_REPOSITORY `
+            --target main `
+            --title "날라매크로 v$env:VERSION" `
+            --notes-file 'release-notes.md' `
+            --latest
+
+      - name: Record EDD/update metadata
+        shell: pwsh
+        run: |
+          $downloadUrl = "https://github.com/$env:GITHUB_REPOSITORY/releases/download/$env:TAG/$env:ASSET"
+          $notesUrl = "https://github.com/$env:GITHUB_REPOSITORY/blob/main/products/nalla-macro/$env:VERSION/release-notes.md"
+          $versionDir = "products/nalla-macro/$env:VERSION"
+          New-Item -ItemType Directory -Force -Path $versionDir | Out-Null
+          Copy-Item 'release-notes.md' "$versionDir/release-notes.md" -Force
+
+          $latest = [ordered]@{
+            productId = 'nalla-macro'
+            title = '날라매크로'
+            version = $env:VERSION
+            channel = 'stable'
+            versionTag = $env:TAG
+            downloadUrl = $downloadUrl
+            asset = $env:ASSET
+            sha256 = $env:SHA256
+            releaseNotesUrl = $notesUrl
+            mandatory = $false
+          }
+          New-Item -ItemType Directory -Force -Path 'products/nalla-macro' | Out-Null
+          $latest | ConvertTo-Json -Depth 5 | Set-Content 'products/nalla-macro/latest.json' -Encoding utf8
+
+          $published = [ordered]@{
+            product_id = 'nalla-macro'
+            version = $env:VERSION
+            version_tag = $env:TAG
+            asset = $env:ASSET
+            sha256 = $env:SHA256
+            release_type = 'stable'
+            source_repo = $env:SOURCE_REPO
+            source_commit = $env:SOURCE_COMMIT
+            source_ci_run_id = $env:SOURCE_CI_RUN_ID
+            release_workflow_run_id = $env:GITHUB_RUN_ID
+          }
+          New-Item -ItemType Directory -Force -Path 'releases' | Out-Null
+          $published | ConvertTo-Json -Depth 5 | Set-Content 'releases/published-nalla-macro-current.json' -Encoding utf8
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add products/nalla-macro releases/published-nalla-macro-current.json
+          git commit -m "Publish NallaMacro $env:VERSION release metadata"
+          git push origin HEAD:main
