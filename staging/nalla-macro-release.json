@@ -1,0 +1,11 @@
+{
+  "product_id": "nalla-macro",
+  "title": "날라매크로",
+  "version": "1.1.0",
+  "source_repo": "Eoingtilab/nalapps-macro",
+  "source_commit": "0ff06e0db6d252f94e1fa127fc2dc7cbd7f984aa",
+  "source_ci_run_id": "31190691107",
+  "tag": "nalla-macro-v1.1.0",
+  "asset": "NallaMacro-v1.1.0-win-x64.zip",
+  "channel": "stable"
+}
