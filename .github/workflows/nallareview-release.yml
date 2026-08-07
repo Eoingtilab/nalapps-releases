@@ -101,6 +101,7 @@ jobs:
           } else {
             gh release create $tag $zip $shaFile $selfTest --target $env:GITHUB_SHA --title "NallaReview v${{ steps.request.outputs.version }}" --notes-file $notes
           }
+          if ($LASTEXITCODE -ne 0) { throw 'GitHub Release publish failed' }
 
       - name: Update stable manifest
         shell: pwsh
@@ -142,3 +143,30 @@ jobs:
           if (-not ($json.assets.name -contains "$asset.sha256")) { throw 'release SHA asset missing' }
           if (-not ($json.assets.name -contains 'self-test-release.txt')) { throw 'release self-test asset missing' }
           Write-Host "RELEASE PASS: $tag / $asset" -ForegroundColor Green
+
+      - name: Record release pipeline status
+        if: always()
+        shell: pwsh
+        run: |
+          $dir = 'products/nalapps-place-autocomment'
+          $path = Join-Path $dir 'release-status.json'
+          $status = [ordered]@{
+            productId = 'nalapps-place-autocomment'
+            version = '${{ steps.request.outputs.version }}'
+            sourceSha = '${{ steps.request.outputs.source_sha }}'
+            tag = '${{ steps.request.outputs.tag }}'
+            jobStatus = '${{ job.status }}'
+            runId = '${{ github.run_id }}'
+            runAttempt = '${{ github.run_attempt }}'
+            runUrl = 'https://github.com/Eoingtilab/nalapps-releases/actions/runs/${{ github.run_id }}'
+            recordedAtUtc = (Get-Date).ToUniversalTime().ToString('o')
+          }
+          $status | ConvertTo-Json | Set-Content $path -Encoding utf8
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $path
+          if (-not (git diff --cached --quiet)) {
+            git commit -m "Record NallaReview release pipeline status"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          }
