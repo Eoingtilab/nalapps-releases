@@ -1,1 +1,15 @@
-{"product_id":"nalapps-easy-smtp","version":"1.0.0-rc.2","version_tag":"easy-smtp-v1.0.0-rc.2","channel_tag":"easy-smtp-current","asset":"nalapps-easy-smtp.zip","sha256":"33f5488eef1dbc40ed0e7f321e3fe109e772d1ec8ef41491f6e47fbcab5632bb","workflow_run_id":"31442581781"}
+{
+  "product_id": "nalapps-easy-smtp",
+  "product_name": "NalApps Easy SMTP",
+  "version": "1.0.0",
+  "version_tag": "v1.0.0",
+  "channel": "standalone",
+  "channel_tag": "easy-smtp-current",
+  "source_repository": "Eoingtilab/nalapps-esay-smtp",
+  "release_url": "https://github.com/Eoingtilab/nalapps-esay-smtp/releases/tag/v1.0.0",
+  "asset": "nalapps-easy-smtp-1.0.0.zip",
+  "sha256": "0a7b39733ef5da5df75e2c83feb4328125e90c8c55f2f045a6fe3c2131fe2522",
+  "edd_download_id": 533,
+  "migrated_from": "nalapps-commerce-addon-easy-smtp (commerce_addon channel, 1.0.0-rc.2)",
+  "notes": "Standalone plugin release. Preserves the nalapps_easy_smtp_settings option and encrypted-password contract from the prior commerce-addon channel."
+}
