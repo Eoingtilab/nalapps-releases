@@ -1,15 +1,16 @@
 {
   "product_id": "nalapps-easy-smtp",
   "product_name": "NalApps Easy SMTP",
-  "version": "1.0.0",
-  "version_tag": "v1.0.0",
+  "version": "1.1.0",
+  "version_tag": "v1.1.0",
   "channel": "standalone",
   "channel_tag": "easy-smtp-current",
   "source_repository": "Eoingtilab/nalapps-esay-smtp",
-  "release_url": "https://github.com/Eoingtilab/nalapps-esay-smtp/releases/tag/v1.0.0",
-  "asset": "nalapps-easy-smtp-1.0.0.zip",
-  "sha256": "0a7b39733ef5da5df75e2c83feb4328125e90c8c55f2f045a6fe3c2131fe2522",
-  "edd_download_id": 533,
+  "release_url": "https://github.com/Eoingtilab/nalapps-esay-smtp/releases/tag/v1.1.0",
+  "asset": "nalapps-easy-smtp-1.1.0.zip",
+  "sha256": "9b0e5e1241f722b82cd35b1af9f1fb1a0e3e5dbbf327065c3dd40c2eaeb51edc",
+  "license_required": false,
+  "update_source": "github_releases",
   "migrated_from": "nalapps-commerce-addon-easy-smtp (commerce_addon channel, 1.0.0-rc.2)",
-  "notes": "Standalone plugin release. Preserves the nalapps_easy_smtp_settings option and encrypted-password contract from the prior commerce-addon channel."
+  "notes": "Free standalone plugin. Provider quick-setup (Brevo/Mailgun/SendGrid) with SMTP or API key connection. No EDD/license dependency; updates check GitHub Releases directly."
 }
