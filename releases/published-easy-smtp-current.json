@@ -1,16 +1,16 @@
 {
   "product_id": "nalapps-easy-smtp",
   "product_name": "NalApps Easy SMTP",
-  "version": "1.1.0",
-  "version_tag": "v1.1.0",
+  "version": "1.1.1",
+  "version_tag": "v1.1.1",
   "channel": "standalone",
   "channel_tag": "easy-smtp-current",
   "source_repository": "Eoingtilab/nalapps-esay-smtp",
-  "release_url": "https://github.com/Eoingtilab/nalapps-esay-smtp/releases/tag/v1.1.0",
-  "asset": "nalapps-easy-smtp-1.1.0.zip",
-  "sha256": "9b0e5e1241f722b82cd35b1af9f1fb1a0e3e5dbbf327065c3dd40c2eaeb51edc",
+  "release_url": "https://github.com/Eoingtilab/nalapps-esay-smtp/releases/tag/v1.1.1",
+  "asset": "nalapps-easy-smtp-1.1.1.zip",
+  "sha256": "0a045149f952c97906d1ad1c83c283b98d2cf90f991a2628da3a150211144d05",
   "license_required": false,
   "update_source": "github_releases",
   "migrated_from": "nalapps-commerce-addon-easy-smtp (commerce_addon channel, 1.0.0-rc.2)",
-  "notes": "Free standalone plugin. Provider quick-setup (Brevo/Mailgun/SendGrid) with SMTP or API key connection. No EDD/license dependency; updates check GitHub Releases directly."
+  "notes": "Free standalone plugin. Provider quick-setup (Brevo/Mailgun/SendGrid) with SMTP or API key connection. 1.1.1 fixes a false-success bug in API-key send failure reporting."
 }
