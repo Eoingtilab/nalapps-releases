@@ -1,0 +1,14 @@
+{
+  "productId": "eoingcapture",
+  "title": "어잉캡쳐",
+  "version": "1.0.1",
+  "channel": "stable",
+  "versionTag": "utility-eoingcapture-v1.0.1",
+  "downloadUrl": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingcapture-v1.0.1/EoingCapture-1.0.1-Setup-x64.exe",
+  "asset": "EoingCapture-1.0.1-Setup-x64.exe",
+  "sha256": "8722d57ec65bb3c481c47ae7461f802962192694611c3e158cfdd03bcc058987",
+  "portableDownloadUrl": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingcapture-v1.0.1/EoingCapture-1.0.1-portable.zip",
+  "portableAsset": "EoingCapture-1.0.1-portable.zip",
+  "portableSha256": "004236cdc127cfdd6095ce36bd25fe0a1cdff87c7adbf775716807dff7d89ee6",
+  "mandatory": false
+}
