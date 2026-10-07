@@ -3,6 +3,8 @@ name: Release Commerce Core Integration Build
 on:
   workflow_dispatch:
   push:
+    branches: ['**']
+    tags-ignore: ['utility-eoingcapture-v*']
     paths:
       - '.github/workflows/release-commerce-core-integration.yml'
 

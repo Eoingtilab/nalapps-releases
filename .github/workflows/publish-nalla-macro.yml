@@ -2,6 +2,8 @@ name: publish-nalla-macro
 
 on:
   push:
+    branches: ['**']
+    tags-ignore: ['utility-eoingcapture-v*']
     paths:
       - 'staging/nalla-macro-release.json'
 
