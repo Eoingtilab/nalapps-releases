@@ -1,0 +1,76 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.2.3",
+  "date": "2026-10-09",
+  "sourceCommit": "932412b9a5bc760cfc5e401ef8ccf7a1c09a02ba",
+  "fullSuite": {
+    "passed": 579,
+    "failed": 0,
+    "skipped": 0
+  },
+  "windowsFormSuite": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "windowsUi": {
+    "passed": true,
+    "scope": [
+      "viewer",
+      "clipboard",
+      "comparison",
+      "presenter",
+      "native ink",
+      "settings",
+      "themes",
+      "dock",
+      "localization",
+      "license UI",
+      "form entry",
+      "encrypted viewer",
+      "stamps"
+    ],
+    "presenterTransientFailure": "First run failed; the isolated rerun and the complete release rerun passed."
+  },
+  "frozenFormChecks": {
+    "installerRuntime": "passed",
+    "onefilePortable": "passed",
+    "syntheticFields": 16,
+    "generatedWordTableFields": 3,
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "checks": [
+      "strict child JSON protocol",
+      "Korean values",
+      "canonical AcroForm values",
+      "widget values",
+      "appearance streams",
+      "rendering",
+      "original bytes preserved"
+    ]
+  },
+  "frozenRuntimeAndUpdate": {
+    "installerRuntime": "passed",
+    "onefilePortable": "passed",
+    "backupRestore": "passed",
+    "portableUpdateRestore": "passed",
+    "crossVersionLiveInstall": false
+  },
+  "installerEndToEnd": {
+    "executed": false,
+    "reason": "Existing installation guard stopped the test before changing the installed app or its associations.",
+    "isolatedShellRegistrationIntegration": "passed"
+  },
+  "sourceArchive": "passed: 287 entries; required resources present; private binaries and user documents excluded",
+  "nativeComponents": "Unchanged verified native components from the stable source were reused.",
+  "limitations": [
+    "The user's original PDF was not supplied; the Office sample was newly generated with Word.",
+    "Hancom-specific output variants and external PDF viewer editing were not separately tested.",
+    "Scanned images and borderless tables are outside automatic field detection.",
+    "Physical printers, pen hardware and multiple physical monitors were not tested."
+  ]
+}
