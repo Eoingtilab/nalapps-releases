@@ -66,6 +66,15 @@
     "isolatedShellRegistrationIntegration": "passed"
   },
   "sourceArchive": "passed: 287 entries; required resources present; private binaries and user documents excluded",
+  "publicUpdateCheck": {
+    "passed": true,
+    "manifestVersion": "2.2.3",
+    "previousVersion": "2.2.2",
+    "currentVersionNeedsUpdate": false,
+    "method": "Actual application updater fetched the public feed and downloaded both release assets with redirect, size, PE-header and SHA-256 validation. A synthetic valid license session was supplied only to the update-check gate; no real license activation or installed-app replacement was performed.",
+    "installer": {"size": 120571254, "sha256": "108b4c25bc8cc7c00e353644bada70f5f58cd8f5e16f87deced098788703338b"},
+    "portable": {"size": 158750658, "sha256": "afbaa95736a9ad9bb331f59ba5fe966440a9633c4fc52e9c7bf5d7e36213741c"}
+  },
   "nativeComponents": "Unchanged verified native components from the stable source were reused.",
   "limitations": [
     "The user's original PDF was not supplied; the Office sample was newly generated with Word.",
