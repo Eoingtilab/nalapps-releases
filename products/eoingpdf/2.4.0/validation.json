@@ -1,0 +1,129 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.0",
+  "date": "2026-10-14",
+  "sourceCommit": "c90f738bae1dfcd9e7f5b4f188845f9133a666cd",
+  "filesChanged": [
+    "CHANGELOG.md",
+    "README.md",
+    "ROADMAP.md",
+    "VERSION",
+    "assets/locales/en-US.json",
+    "assets/locales/ja-JP.json",
+    "assets/locales/ko-KR.json",
+    "build_release.ps1",
+    "docs/PDF_WORKSPACE_UX_20261014.md",
+    "docs/RELEASE_NOTES.md",
+    "docs/RELEASE_NOTES_2.4.0.md",
+    "src/eoingpdf/advanced_ui.py",
+    "src/eoingpdf/edit_history.py",
+    "src/eoingpdf/form_ui.py",
+    "src/eoingpdf/health_check.py",
+    "src/eoingpdf/ink_toolbar.py",
+    "src/eoingpdf/stamp_editor.py",
+    "src/eoingpdf/tool_browser.py",
+    "src/eoingpdf/tool_catalog.py",
+    "src/eoingpdf/viewer.py",
+    "src/eoingpdf/viewer_workspace.py",
+    "tests/clipboard_ui_smoke.py",
+    "tests/test_edit_history.py",
+    "tests/test_tool_browser.py",
+    "tests/workspace_ui_smoke.py"
+  ],
+  "fullSuite": {
+    "passed": 640,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 86.309
+  },
+  "windowsUi": {
+    "passed": true,
+    "languages": [
+      "ko-KR",
+      "en-US",
+      "ja-JP"
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "workspaceSizes": [
+      [
+        680,
+        480
+      ],
+      [
+        960,
+        820
+      ]
+    ],
+    "scope": [
+      "tool search and categories",
+      "edit history",
+      "undo/redo",
+      "stamp panel at small size",
+      "viewer",
+      "clipboard",
+      "comparison",
+      "presenter",
+      "native ink",
+      "settings",
+      "Windows theme/DWM",
+      "dock",
+      "localized dialogs",
+      "licenses",
+      "form entry",
+      "encrypted viewer",
+      "stamp vault"
+    ],
+    "visualReview": "Workspace, search, edit history and watermark dialog screenshots inspected."
+  },
+  "editHistory": {
+    "watermarkUndoRedo": "passed",
+    "formValuesUndoRedo": "passed",
+    "stampAddMoveResizeDelete": "passed",
+    "pageReorderDeletion": "passed",
+    "resetAllAndUndoReset": "passed",
+    "branchAndTemporaryCleanup": "passed",
+    "restoreFailurePreservesCurrentDraft": "passed",
+    "cancelledToolPreservesEditableStamps": "passed",
+    "copyIncludesUnsavedStamp": "passed",
+    "maxEditSteps": 32
+  },
+  "formRetention": {
+    "canonicalFieldTree": "passed with pypdf",
+    "widgetValues": "passed",
+    "appearanceStreams": "passed",
+    "reorderAndDeletion": "passed",
+    "encryptionPreservation": "passed"
+  },
+  "frozenRuntime": {
+    "installer": "passed",
+    "portable": "passed",
+    "jpegDecoder": "passed",
+    "PDFStampUndoRedo": "passed",
+    "toolSearch": "passed",
+    "generatedWordTableFields": 3,
+    "syntheticFormFields": 16
+  },
+  "updates": {
+    "installedRuntimeBackupRestore": "passed",
+    "portableUpdateRestore": "passed",
+    "liveCrossVersionInstall": false
+  },
+  "installerEndToEnd": {
+    "executed": false,
+    "reason": "Existing installed application preserved; packaged runtimes and isolated integration were tested."
+  },
+  "sourceArchive": {
+    "passed": true,
+    "entries": 308
+  },
+  "nativeComponents": "Unchanged native DLLs reused from the stable source.",
+  "limits": [
+    "Editing history belongs to the current unsaved document session; saved watermarks from other apps are not automatically identified and removed.",
+    "Physical pen, printer and multiple-monitor hardware were not tested.",
+    "User-specific original PDFs were not provided.",
+    "Actual existing-installation replacement was not performed."
+  ]
+}
