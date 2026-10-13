@@ -54,5 +54,27 @@
   "limits": [
     "User-specific PDF was not provided; generated PDFs used.",
     "Actual existing installation replacement was not performed."
-  ]
+  ],
+  "publicUpdateCheck": {
+    "passed": true,
+    "version": "2.4.1",
+    "previousVersions": [
+      "2.3.0",
+      "2.4.0"
+    ],
+    "assets": [
+      {
+        "kind": "installer",
+        "size": 121553418,
+        "sha256": "f95a00c1a058fd0b9a38bc0483663bddc0de69dd57f8b9cce8e2eeb204c5f085"
+      },
+      {
+        "kind": "portable",
+        "size": 160095885,
+        "sha256": "48680f55f563b1478a1f1f3acb5c26afa39b9151853037b229ab2c9c02291cfb"
+      }
+    ],
+    "currentVersionNeedsUpdate": false,
+    "method": "Actual application updater fetched public feed and downloaded both assets with redirect, PE-header, size and SHA-256 checks. License-session gate mocked; existing installation was not replaced."
+  }
 }
