@@ -125,5 +125,27 @@
     "Physical pen, printer and multiple-monitor hardware were not tested.",
     "User-specific original PDFs were not provided.",
     "Actual existing-installation replacement was not performed."
-  ]
+  ],
+  "publicUpdateCheck": {
+    "passed": true,
+    "manifestVersion": "2.4.0",
+    "previousVersions": [
+      "2.2.3",
+      "2.3.0"
+    ],
+    "currentVersionNeedsUpdate": false,
+    "assets": [
+      {
+        "kind": "installer",
+        "size": 121537268,
+        "sha256": "9c98a526b8b048036bf3b88245a8378bee3dcbb8a2f485eae87896d4613ffc66"
+      },
+      {
+        "kind": "portable",
+        "size": 160096512,
+        "sha256": "cb10896f1d39d2e0e0c84b998a84576c4590cc505841812761d66d23a0216872"
+      }
+    ],
+    "method": "Actual app updater fetched the public feed and downloaded both assets with redirect, PE-header, size and SHA-256 checks. The license-session gate was mocked; no real license activation or existing-app replacement was performed."
+  }
 }
