@@ -88,5 +88,20 @@
     "Original PDF content is not erased by the annotation eraser.",
     "Physical pen, printer and multiple-monitor hardware were not tested.",
     "User-specific original documents were not supplied."
-  ]
+  ],
+  "publicUpdateCheck": {
+    "passed": true,
+    "manifestVersion": "2.3.0",
+    "previousVersion": "2.2.3",
+    "currentVersionNeedsUpdate": false,
+    "method": "Actual application updater fetched the public feed and downloaded both assets with redirect, PE-header, size and SHA-256 checks. The license-session gate was mocked; no real license activation or installed-app replacement was performed.",
+    "installer": {
+      "size": 121497015,
+      "sha256": "cd279cd7afd222eeafb3f22eeee7da84dcec0b6b63e2caf98029a8b8d408c394"
+    },
+    "portable": {
+      "size": 160054469,
+      "sha256": "773d03d198ecfd06205f9ec413ed70eac52aa6acc323de9b4cf37d8b0fdc23aa"
+    }
+  }
 }
