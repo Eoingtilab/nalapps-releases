@@ -1,0 +1,92 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.3.0",
+  "date": "2026-10-13",
+  "sourceCommit": "4492562429eb2147846806172fe84e75d98036e1",
+  "fullSuite": {
+    "passed": 611,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 80.87
+  },
+  "windowsEditingSuite": {
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "windowsGpu": {
+    "pen": "passed",
+    "partialEraser": "passed",
+    "undo": "passed",
+    "input": "real Windows native overlay callbacks"
+  },
+  "windowsUi": {
+    "passed": true,
+    "scope": [
+      "stamp on current PDF",
+      "resizable pictures",
+      "wrapped ink toolbar",
+      "viewer",
+      "clipboard",
+      "comparison",
+      "presenter",
+      "native ink",
+      "themes",
+      "dock",
+      "localized dialogs",
+      "form entry",
+      "encrypted viewer",
+      "stamps"
+    ],
+    "visualReview": "Both current-PDF stamp preview and expanded slideshow tools inspected."
+  },
+  "formRetention": {
+    "canonicalFieldTree": "passed with pypdf",
+    "widgetValues": "passed",
+    "appearanceStreams": "passed",
+    "reorderAndDeletion": "passed",
+    "encryptionPreservation": "passed"
+  },
+  "previewWorkflow": {
+    "composedStampAndTool": "passed",
+    "formEntryBeforeFinalSave": "passed",
+    "slideshowDraftAndReturnToViewer": "passed",
+    "temporaryOwnershipAndDiscard": "passed",
+    "originalPreservation": "passed"
+  },
+  "screenCapture": {
+    "regionPixelMapping": "passed with synthetic pixels",
+    "cancelRestoreAndCleanup": "passed",
+    "actualUserDesktopCapturedDuringTests": false,
+    "physicalMultipleMonitorsTested": false
+  },
+  "frozenRuntime": {
+    "installer": "passed",
+    "portable": "passed",
+    "jpegDecoder": "passed",
+    "stampEditor": "passed",
+    "inkImageUndoRedo": "passed",
+    "generatedWordTableFields": 3,
+    "syntheticFormFields": 16
+  },
+  "updates": {
+    "installedRuntimeBackupRestore": "passed",
+    "portableUpdateRestore": "passed",
+    "liveCrossVersionInstall": false
+  },
+  "installerEndToEnd": {
+    "executed": false,
+    "reason": "Existing installed application is preserved; package runtimes and isolated shell-registration integration were tested."
+  },
+  "sourceArchive": {
+    "passed": true,
+    "entries": 299
+  },
+  "nativeComponents": "Unchanged native DLLs from the stable source were reused.",
+  "limits": [
+    "Image pixel editing, crop, rotation and paint-bucket fill are outside the user-selected annotation scope.",
+    "Original PDF content is not erased by the annotation eraser.",
+    "Physical pen, printer and multiple-monitor hardware were not tested.",
+    "User-specific original documents were not supplied."
+  ]
+}
