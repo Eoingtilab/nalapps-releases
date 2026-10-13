@@ -1,0 +1,58 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.1",
+  "date": "2026-10-14",
+  "sourceCommit": "2a4b6f29f82ffd7f8cd2857e7f70df68492567ee",
+  "filesChanged": [
+    "CHANGELOG.md",
+    "README.md",
+    "ROADMAP.md",
+    "VERSION",
+    "docs/RELEASE_NOTES.md",
+    "docs/RELEASE_NOTES_2.4.1.md",
+    "src/eoingpdf/health_check.py",
+    "src/eoingpdf/viewer.py",
+    "tests/test_viewer_localization.py",
+    "tests/ui_regressions.py"
+  ],
+  "fullSuite": {
+    "passed": 643,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 93.034
+  },
+  "pageNavigation": {
+    "languages": [
+      "ko-KR",
+      "en-US",
+      "ja-JP"
+    ],
+    "samplePages": 23,
+    "down16To17": "passed",
+    "up17To16": "passed",
+    "firstLastBounds": "passed",
+    "previousNextAndPgUpPgDownMatch": "passed",
+    "tooltipDirections": "passed",
+    "originalBytesPreserved": "passed"
+  },
+  "windowsUi": {
+    "passed": true,
+    "scope": "All required Windows GUI gates, including corrected page arrows and localized workspace."
+  },
+  "frozenRuntime": {
+    "installer": "passed",
+    "portable": "passed",
+    "pageArrowDirections": "passed in both actual executable health checks",
+    "syntheticFormFields": 16,
+    "updatesAndRestore": "passed"
+  },
+  "sourceArchive": {
+    "passed": true,
+    "entries": 309
+  },
+  "nativeComponents": "Unchanged stable native DLLs reused.",
+  "limits": [
+    "User-specific PDF was not provided; generated PDFs used.",
+    "Actual existing installation replacement was not performed."
+  ]
+}
