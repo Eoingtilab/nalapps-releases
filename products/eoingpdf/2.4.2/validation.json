@@ -1,0 +1,289 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.2",
+  "date": "2026-10-14",
+  "sourceCommit": "52cf548b91213f0cac5e5015941378954a8f5ef1",
+  "filesChanged": [
+    "CHANGELOG.md",
+    "README.md",
+    "ROADMAP.md",
+    "VERSION",
+    "build_release.ps1",
+    "docs/QUALITY_REPORT_2.4.2.md",
+    "docs/RELEASE_NOTES.md",
+    "docs/RELEASE_NOTES_2.4.2.md",
+    "src/eoingpdf/advanced.py",
+    "src/eoingpdf/core.py",
+    "src/eoingpdf/form_ui.py",
+    "src/eoingpdf/forms.py",
+    "src/eoingpdf/page_copy.py",
+    "src/eoingpdf/splitter.py",
+    "src/eoingpdf/transform_process.py",
+    "src/eoingpdf/viewer.py",
+    "tests/frozen_form_smoke.py",
+    "tests/reliability_ui_smoke.py",
+    "tests/test_daily_workflows.py",
+    "tests/test_form_stress.py",
+    "tests/test_process_payloads.py",
+    "tests/test_viewer_resources.py",
+    "tests/viewer_performance_smoke.py"
+  ],
+  "fullSuite": {
+    "passed": 688,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 119.77
+  },
+  "dailyWorkflows": {
+    "passed": 12,
+    "pages": [
+      8,
+      50
+    ],
+    "scope": "Generated mixed-rotation/crop forms: stamps, watermark, actual-process Korean form fill, undo/redo, page edits, save/cancel/failure; canonical values, AP, links, metadata, text and original SHA."
+  },
+  "sharedForms": {
+    "stressCases": 27,
+    "relatedTestsPassed": 86,
+    "baselineStressFailures": 6,
+    "canonicalAndAppearances": "passed",
+    "reverseExtractAndSplit": "passed",
+    "parentChoiceInheritanceAndMultiSelect": "passed",
+    "sharedReadonlyAndConflicts": "passed",
+    "actualWordTableFields": 3,
+    "actualWordKoreanFillAndReverse": "passed"
+  },
+  "windowsUi": {
+    "passed": true,
+    "languages": [
+      "ko-KR",
+      "en-US",
+      "ja-JP"
+    ],
+    "scope": "All required Windows GUI gates plus actual 50-page navigation, 24-card bound, actual presentation Cancel button, draft/ink/history preservation and close cleanup.",
+    "readerReport": {
+      "platform": "windows",
+      "pages": 50,
+      "original_sha256": "294b913cbcd18bb752c88550c8dde4595a11bb2c928db6a9b50c281744f2b4db",
+      "scope": "Actual Windows Qt widgets; generated PDF/JPEG only; no desktop or other-app screenshots.",
+      "navigation_and_enter_verified": true,
+      "maximum_live_thumbnail_cards": 24,
+      "actual_presentation_cancel_button_clicked": true,
+      "viewer_draft_stamp_ink_and_temporary_pdf_preserved": true,
+      "accepted_close_releases_rasters_timers_and_temporary_pdf": true,
+      "original_unchanged": true
+    }
+  },
+  "frozenRuntime": {
+    "installer": "passed",
+    "portable": "passed",
+    "syntheticFormFields": 16,
+    "actualWordFields": 3,
+    "canonicalSharedParentKidsAfterReverseAndSplit": "passed in both binaries",
+    "largeKoreanRequestFields": 50,
+    "largeKoreanRequestBytes": 102329,
+    "updatesAndRestore": "passed"
+  },
+  "performance": {
+    "daily": {
+      "before": {
+        "case": "daily",
+        "pages": 50,
+        "file_bytes": 40607,
+        "open_seconds": 0.1095,
+        "navigation_samples": 51,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.0047,
+        "navigation_p95_seconds": 0.0061,
+        "navigation_worst_seconds": 0.0065,
+        "thumbnail_full_traversal_seconds": 0.1182,
+        "retained_thumbnail_cards": 50,
+        "thumbnail_cache_entries": 50,
+        "working_set_bytes": 113819648,
+        "peak_working_set_bytes": 116609024,
+        "original_sha256": "c1aeb9e8a730bd9777a0a66ddf57f96a5a5bf6b25b06af4de7202549984e93ce",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 2868864,
+        "working_set_after_close_bytes": 113872896,
+        "retained_thumbnail_cards_after_close": 50,
+        "page_raster_released_after_close": false
+      },
+      "after": {
+        "case": "daily",
+        "pages": 50,
+        "file_bytes": 40607,
+        "open_seconds": 0.1125,
+        "navigation_samples": 51,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.0051,
+        "navigation_p95_seconds": 0.0065,
+        "navigation_worst_seconds": 0.0076,
+        "thumbnail_full_traversal_seconds": 0.1073,
+        "retained_thumbnail_cards": 24,
+        "thumbnail_cache_entries": 24,
+        "working_set_bytes": 109289472,
+        "peak_working_set_bytes": 113676288,
+        "original_sha256": "c1aeb9e8a730bd9777a0a66ddf57f96a5a5bf6b25b06af4de7202549984e93ce",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 1387136,
+        "working_set_after_close_bytes": 109346816,
+        "retained_thumbnail_cards_after_close": 0,
+        "page_raster_released_after_close": true
+      }
+    },
+    "text": {
+      "before": {
+        "case": "text",
+        "pages": 1000,
+        "file_bytes": 815157,
+        "open_seconds": 0.1567,
+        "navigation_samples": 32,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.0105,
+        "navigation_p95_seconds": 0.0133,
+        "navigation_worst_seconds": 0.0144,
+        "thumbnail_full_traversal_seconds": 4.3851,
+        "retained_thumbnail_cards": 1000,
+        "thumbnail_cache_entries": 1000,
+        "working_set_bytes": 249065472,
+        "peak_working_set_bytes": 249065472,
+        "original_sha256": "281ee6527f0c2d68fc5ec5562c0277ed4f9dfa84da698cf1fd55f873e010a1a5",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 57606400,
+        "working_set_after_close_bytes": 249933824,
+        "retained_thumbnail_cards_after_close": 1000,
+        "page_raster_released_after_close": false
+      },
+      "after": {
+        "case": "text",
+        "pages": 1000,
+        "file_bytes": 815157,
+        "open_seconds": 0.1442,
+        "navigation_samples": 32,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.01,
+        "navigation_p95_seconds": 0.0128,
+        "navigation_worst_seconds": 0.0179,
+        "thumbnail_full_traversal_seconds": 3.4997,
+        "retained_thumbnail_cards": 24,
+        "thumbnail_cache_entries": 24,
+        "working_set_bytes": 119377920,
+        "peak_working_set_bytes": 119377920,
+        "original_sha256": "281ee6527f0c2d68fc5ec5562c0277ed4f9dfa84da698cf1fd55f873e010a1a5",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 1387136,
+        "working_set_after_close_bytes": 113676288,
+        "retained_thumbnail_cards_after_close": 0,
+        "page_raster_released_after_close": true
+      }
+    },
+    "scan": {
+      "before": {
+        "case": "scan",
+        "pages": 60,
+        "file_bytes": 38641662,
+        "open_seconds": 0.1445,
+        "navigation_samples": 31,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.0277,
+        "navigation_p95_seconds": 0.0305,
+        "navigation_worst_seconds": 0.0328,
+        "thumbnail_full_traversal_seconds": 0.4881,
+        "retained_thumbnail_cards": 60,
+        "thumbnail_cache_entries": 60,
+        "working_set_bytes": 307351552,
+        "peak_working_set_bytes": 307351552,
+        "original_sha256": "227f958a5f1af4063d5ae5881fc1e01deea4096fa2aae7ced6723dc0ff2183a3",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 3525120,
+        "working_set_after_close_bytes": 307408896,
+        "retained_thumbnail_cards_after_close": 60,
+        "page_raster_released_after_close": false
+      },
+      "after": {
+        "case": "scan",
+        "pages": 60,
+        "file_bytes": 38641662,
+        "open_seconds": 0.1424,
+        "navigation_samples": 31,
+        "host": {
+          "system": "win32",
+          "python": "3.12.14",
+          "pymupdf": "1.27.2.3",
+          "logical_cpus": 16
+        },
+        "navigation_median_seconds": 0.0273,
+        "navigation_p95_seconds": 0.0305,
+        "navigation_worst_seconds": 0.0329,
+        "thumbnail_full_traversal_seconds": 0.4281,
+        "retained_thumbnail_cards": 24,
+        "thumbnail_cache_entries": 24,
+        "working_set_bytes": 301568000,
+        "peak_working_set_bytes": 301568000,
+        "original_sha256": "227f958a5f1af4063d5ae5881fc1e01deea4096fa2aae7ced6723dc0ff2183a3",
+        "original_unchanged": true,
+        "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+        "retained_thumbnail_pixmap_bytes": 1410048,
+        "working_set_after_close_bytes": 301621248,
+        "retained_thumbnail_cards_after_close": 0,
+        "page_raster_released_after_close": true
+      }
+    }
+  },
+  "sourceArchive": {
+    "passed": true,
+    "entries": 318
+  },
+  "releaseAssets": [
+    {
+      "name": "EoingPDF-2.4.2-Setup-x64.exe",
+      "size": 121553138,
+      "sha256": "0ab6563c3b47988a3d5cc0220e848f1aa1201dc83cb60d6db403af85f9445a0b"
+    },
+    {
+      "name": "EoingPDF-2.4.2-portable.exe",
+      "size": 160098157,
+      "sha256": "964ffff8128f8e6d2f4cc0d9299821a11b978a9a5cfd3a53063739fe2d86dd55"
+    }
+  ],
+  "nativeComponents": "Unchanged stable native DLLs reused.",
+  "limits": [
+    "Generated fixtures and existing generated Word output used; no user-specific PDF collected.",
+    "Actual existing installation replacement/uninstallation not performed.",
+    "Some static listbox appearances lack selection-row highlighting; actual values and input dialog selections are verified.",
+    "Repeated page extraction uses existing separate-field copy behavior; original sharing is preserved for unique page selections.",
+    "Form copy/split uses a compressed document snapshot; memory cost grows with document size.",
+    "Performance is a single fresh-process offscreen comparison; everyday navigation latency improvement is not claimed.",
+    "XFA, certificate signatures and exhaustive external viewer/Office/Hancom variants are outside this pass."
+  ]
+}
