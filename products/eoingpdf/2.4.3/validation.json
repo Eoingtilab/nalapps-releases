@@ -310,5 +310,27 @@
     "versionAndRelativeLinks": "passed",
     "verifiedWorkflowDifferentiation": "passed",
     "unsupportedBestRankingExcluded": true
+  },
+  "publicUpdateCheck": {
+    "version": "2.4.3",
+    "assets": [
+      {
+        "kind": "installer",
+        "size": 121578737,
+        "sha256": "5b048f847fe8abe5079298bc3725db433e20f13fbee46ecb5e6f62bdcaae1000"
+      },
+      {
+        "kind": "portable",
+        "size": 160111695,
+        "sha256": "3b96e321615cc15de585186bbb44a69e3a5f16ac39627c7d7e4ea7480301cfec"
+      }
+    ],
+    "previousVersions": [
+      "2.4.1",
+      "2.4.2"
+    ],
+    "passed": true,
+    "currentVersionNeedsUpdate": false,
+    "method": "Actual updater fetched the public feed and downloaded installer and portable with redirect, PE-header, size and SHA-256 checks. License-session gate mocked; existing installation was not replaced."
   }
 }
