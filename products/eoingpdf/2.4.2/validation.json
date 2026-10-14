@@ -285,5 +285,27 @@
     "Form copy/split uses a compressed document snapshot; memory cost grows with document size.",
     "Performance is a single fresh-process offscreen comparison; everyday navigation latency improvement is not claimed.",
     "XFA, certificate signatures and exhaustive external viewer/Office/Hancom variants are outside this pass."
-  ]
+  ],
+  "publicUpdateCheck": {
+    "version": "2.4.2",
+    "assets": [
+      {
+        "kind": "installer",
+        "size": 121553138,
+        "sha256": "0ab6563c3b47988a3d5cc0220e848f1aa1201dc83cb60d6db403af85f9445a0b"
+      },
+      {
+        "kind": "portable",
+        "size": 160098157,
+        "sha256": "964ffff8128f8e6d2f4cc0d9299821a11b978a9a5cfd3a53063739fe2d86dd55"
+      }
+    ],
+    "previousVersions": [
+      "2.4.0",
+      "2.4.1"
+    ],
+    "passed": true,
+    "currentVersionNeedsUpdate": false,
+    "method": "Actual application updater fetched public feed and downloaded both assets with redirect, PE-header, size and SHA-256 checks. License-session gate mocked; existing installation was not replaced."
+  }
 }
