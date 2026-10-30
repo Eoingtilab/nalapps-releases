@@ -325,10 +325,74 @@
     "packaged_tls_matches_tested_v4": true
   },
   "releaseChecks": {
-    "publicAssetDigests": "pending",
-    "liveUpdaterDownloads": "pending",
-    "eddProduct26818": "pending",
-    "githubActions": "not dispatched; source workflow is manual-only and publisher commits use [skip ci]"
+    "publicAssetDigests": {
+      "passed": true,
+      "scope": "All five package assets plus checksum file matched GitHub server SHA-256 and size; source-release ZIP digest matched too.",
+      "release": "https://github.com/Eoingtilab/nalapps-releases/releases/tag/utility-eoingpdf-v2.4.4",
+      "sourceRelease": "https://github.com/Eoingtilab/EoingPDF/releases/tag/v2.4.4"
+    },
+    "liveUpdaterDownloads": {
+      "ok": true,
+      "manifestVersion": "2.4.4",
+      "downloads": [
+        {
+          "kind": "installer",
+          "url": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingpdf-v2.4.4/EoingPDF-2.4.4-Setup-x64.exe",
+          "bytes": 121321802,
+          "sha256": "e9f96f3dc9825c0b4a2685271ec30c12d098f25a24e2bd5038cf26b257c415db",
+          "from_2_4_3": "update available",
+          "at_2_4_4": "no update",
+          "actual_download_and_hash": "passed"
+        },
+        {
+          "kind": "portable",
+          "url": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingpdf-v2.4.4/EoingPDF-2.4.4-portable.exe",
+          "bytes": 159836991,
+          "sha256": "737be5ee205d374763b41142bece4bcab8b719121ebf77ee0a29f6ea29b62fb3",
+          "from_2_4_3": "update available",
+          "at_2_4_4": "no update",
+          "actual_download_and_hash": "passed"
+        }
+      ],
+      "scope": "Real public network with the actual application updater. Only valid_session and distribution form were mocked; no license activation or installer execution.",
+      "installationPerformed": false,
+      "licenseStateCreated": false
+    },
+    "eddProduct26818": {
+      "productId": 26818,
+      "version": "2.4.4",
+      "primaryAsset": "EoingPDF-2.4.4-Setup-x64.exe",
+      "sha256": "e9f96f3dc9825c0b4a2685271ec30c12d098f25a24e2bd5038cf26b257c415db",
+      "delivery": "READY",
+      "consistency": "READY",
+      "assetVerification": "VERIFIED",
+      "syncTime": "2026-10-30 20:29:04",
+      "bodyFilenameUpdates": 2,
+      "bodyPreservedOtherThanFilenames": true,
+      "bodySavedAndReloaded": true,
+      "publicProductVersionVerified": true,
+      "customerEntitlementDownloadTested": false,
+      "workflow": "Release Distribution preview then synchronization; user accepted confirmation dialog; product body filename updates saved afterward"
+    },
+    "githubActions": {
+      "dispatched": false,
+      "sourceWorkflow": "manual only",
+      "publisherCommits": "all release commits include [skip ci]",
+      "audit": {
+        "source": {
+          "commit": "6abf4233331c661b627551a3201a1b9f2fa4200e",
+          "workflowRuns": 0
+        },
+        "assets": {
+          "commit": "165815b927031a70627136dd1de67f0885757a94",
+          "workflowRuns": 0
+        },
+        "feed": {
+          "commit": "53b0d30c96e4d2cf564fa4cdaf7e85c8b1080451",
+          "workflowRuns": 0
+        }
+      }
+    }
   },
   "limits": [
     "Microsoft Store submission is performed separately by the owner.",
@@ -336,5 +400,31 @@
     "External-purchase declaration was not changed; final read-only Partner Center verification remains with owner.",
     "Existing installed user app was not replaced; installer was compiled, not installed over the user app.",
     "EDD customer entitlement download/installation is separate from public updater and admin metadata verification."
-  ]
+  ],
+  "independentArtifactAudit": {
+    "sourceZipFiles": 340,
+    "allSourceZipFileHashesMatchReleaseWorktree": true,
+    "portableZipFiles": 386,
+    "portableZipMatchesOnedirFileBytes": true,
+    "installerCompiledInputFiles": 386,
+    "installerInputSetMatchesTestedOnedir": true,
+    "onedirExeMatchesTestedMsixExe": true,
+    "licensingModulesReadFromBothActualPyzArchivesMatchSource": [
+      "licensing",
+      "license_ui",
+      "network_check",
+      "package_context",
+      "health_check"
+    ],
+    "originalStoreMsixExeStagingAndUserLicenseHashesRechecked": true,
+    "scope": "Read-only independent audits. Installer was compiled from verified inputs; no independent installer extraction or user-app installation was performed."
+  },
+  "deployment": {
+    "githubSourcePublished": true,
+    "publicPackagesPublished": true,
+    "latestManifest": "2.4.4",
+    "eddProductSynchronized": true,
+    "submittedToMicrosoft": false,
+    "storeSignedInstallTested": false
+  }
 }
