@@ -1,0 +1,340 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.4",
+  "date": "2026-10-30",
+  "sourceCommit": "6abf4233331c661b627551a3201a1b9f2fa4200e",
+  "sourceTag": "v2.4.4",
+  "assets": {
+    "EoingPDF-2.4.4-Setup-x64.exe": {
+      "bytes": 121321802,
+      "sha256": "e9f96f3dc9825c0b4a2685271ec30c12d098f25a24e2bd5038cf26b257c415db"
+    },
+    "EoingPDF-2.4.4-portable.exe": {
+      "bytes": 159836991,
+      "sha256": "737be5ee205d374763b41142bece4bcab8b719121ebf77ee0a29f6ea29b62fb3"
+    },
+    "EoingPDF-2.4.4-portable.zip": {
+      "bytes": 163974922,
+      "sha256": "8a2276a00ab7a1db3fb33548c59b9967851f970168034db1b774650a0aebb0a8"
+    },
+    "EoingPDF-2.4.4-source.zip": {
+      "bytes": 30827243,
+      "sha256": "ef306a68c393ef168feed3455c5f0266ce76a983a8c79a1395765b8158ce3d67"
+    },
+    "EoingPDF-2.4.4-Store-x64.msix": {
+      "bytes": 165571871,
+      "sha256": "d9d9023fdf213f64025be596a74a48bff315fce917f40f3371e6beeeebfec12e"
+    }
+  },
+  "fullSuite": {
+    "passed": 737,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 132.837
+  },
+  "uiGates": {
+    "ui_regressions": "passed",
+    "clipboard_ui_smoke": "passed",
+    "diff_ui_smoke": "passed",
+    "presenter_ui_smoke": "passed",
+    "native_ink_ui_smoke": "passed",
+    "settings_ui_smoke": "passed",
+    "theme_windows_smoke": "passed",
+    "staging_dock_ui_smoke": "passed",
+    "localization_ui_smoke": "passed",
+    "license_ui_smoke": "passed",
+    "form_ui_smoke": "passed",
+    "encrypted_viewer_smoke": "passed",
+    "stamp_ui_smoke": "passed",
+    "editor_ui_smoke": "passed",
+    "workspace_ui_smoke": "passed",
+    "reliability_ui_smoke": "passed",
+    "icon-1.25": "passed",
+    "icon-1.5": "passed"
+  },
+  "uiPrivacy": "Generated documents and test windows only; passive desktop clipboard capture disabled in test runner; isolated application profiles.",
+  "frozenHttps": {
+    "onedir": {
+      "ok": true,
+      "tests": [
+        {
+          "name": "live-invalid-key",
+          "returncode": 0,
+          "report": {
+            "ok": true,
+            "nonce": "e8aaf895ab0ba5d445bd314dce6729a9",
+            "frozen": true,
+            "stage": "complete",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "server_json": true,
+            "server_rejected_probe": true,
+            "product_matches": true
+          },
+          "isolated_appdata": true,
+          "license_state_created": false
+        },
+        {
+          "name": "connection-refused",
+          "returncode": 1,
+          "report": {
+            "ok": false,
+            "nonce": "3df5623b5b756c7446a23c95e0662e43",
+            "frozen": true,
+            "stage": "server_check",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "error_type": "LicenseError",
+            "error_kind": "connection",
+            "error_frames": [
+              {
+                "file": "network_check.py",
+                "line": 37,
+                "function": "main"
+              },
+              {
+                "file": "licensing.py",
+                "line": 59,
+                "function": "request"
+              }
+            ]
+          },
+          "isolated_appdata": true,
+          "license_state_created": false
+        },
+        {
+          "name": "untrusted-certificate",
+          "returncode": 1,
+          "report": {
+            "ok": false,
+            "nonce": "ec710362eebd4b497114f8e71747f901",
+            "frozen": true,
+            "stage": "server_check",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "error_type": "LicenseError",
+            "error_kind": "tls",
+            "error_frames": [
+              {
+                "file": "network_check.py",
+                "line": 37,
+                "function": "main"
+              },
+              {
+                "file": "licensing.py",
+                "line": 58,
+                "function": "request"
+              }
+            ]
+          },
+          "isolated_appdata": true,
+          "license_state_created": false,
+          "loopback_proxy": {
+            "connect_requested": true,
+            "target_is_license_server": true,
+            "tls_handshake_rejected": true,
+            "tls_handshake_succeeded": false,
+            "alert": "TLSV1_ALERT_UNKNOWN_CA"
+          }
+        }
+      ],
+      "activation_performed": false,
+      "windows_certificate_store_changed": false,
+      "tls_layout": "onedir",
+      "bundled_tls": [
+        {
+          "name": "_ssl.pyd",
+          "bytes": 180528,
+          "sha256": "f4cd52c6bf6e9538a08ba816234b3f5839aa19a419752795c4a3236e69e2f8fc"
+        },
+        {
+          "name": "libcrypto-3-x64.dll",
+          "bytes": 8003376,
+          "sha256": "c1823e279b5cfd40c5c46e082d14b5d20d2884102079254b2b016f59266d76c7"
+        },
+        {
+          "name": "libssl-3-x64.dll",
+          "bytes": 1599280,
+          "sha256": "167a7e7db94acabe59de0022f206674569e77873fa1572513dcff08abd26c379"
+        },
+        {
+          "name": "codex-rejected-cas.pem",
+          "bytes": 906,
+          "sha256": "c916ce1b14ed8ca69e9b5c9fab22799a900dd610d6d4ec9b1347f4fd48e53718"
+        }
+      ]
+    },
+    "onefile": {
+      "ok": true,
+      "tests": [
+        {
+          "name": "live-invalid-key",
+          "returncode": 0,
+          "report": {
+            "ok": true,
+            "nonce": "a3f2553dcb92dfaf439718d16c658477",
+            "frozen": true,
+            "stage": "complete",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "server_json": true,
+            "server_rejected_probe": true,
+            "product_matches": true
+          },
+          "isolated_appdata": true,
+          "license_state_created": false
+        },
+        {
+          "name": "connection-refused",
+          "returncode": 1,
+          "report": {
+            "ok": false,
+            "nonce": "9be324efa929cac525597534be803831",
+            "frozen": true,
+            "stage": "server_check",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "error_type": "LicenseError",
+            "error_kind": "connection",
+            "error_frames": [
+              {
+                "file": "network_check.py",
+                "line": 37,
+                "function": "main"
+              },
+              {
+                "file": "licensing.py",
+                "line": 59,
+                "function": "request"
+              }
+            ]
+          },
+          "isolated_appdata": true,
+          "license_state_created": false
+        },
+        {
+          "name": "untrusted-certificate",
+          "returncode": 1,
+          "report": {
+            "ok": false,
+            "nonce": "a0bc8d370b196f596f3a623097a5557f",
+            "frozen": true,
+            "stage": "server_check",
+            "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+            "certificate_verification": true,
+            "hostname_verification": true,
+            "https_connection": true,
+            "https_handler": true,
+            "error_type": "LicenseError",
+            "error_kind": "tls",
+            "error_frames": [
+              {
+                "file": "network_check.py",
+                "line": 37,
+                "function": "main"
+              },
+              {
+                "file": "licensing.py",
+                "line": 58,
+                "function": "request"
+              }
+            ]
+          },
+          "isolated_appdata": true,
+          "license_state_created": false,
+          "loopback_proxy": {
+            "connect_requested": true,
+            "target_is_license_server": true,
+            "tls_handshake_rejected": true,
+            "tls_handshake_succeeded": false,
+            "alert": "TLSV1_ALERT_UNKNOWN_CA"
+          }
+        }
+      ],
+      "activation_performed": false,
+      "windows_certificate_store_changed": false,
+      "tls_layout": "onefile",
+      "bundled_tls": [
+        {
+          "name": "_ssl.pyd",
+          "bytes": 180528,
+          "sha256": "f4cd52c6bf6e9538a08ba816234b3f5839aa19a419752795c4a3236e69e2f8fc"
+        },
+        {
+          "name": "libcrypto-3-x64.dll",
+          "bytes": 8003376,
+          "sha256": "c1823e279b5cfd40c5c46e082d14b5d20d2884102079254b2b016f59266d76c7"
+        },
+        {
+          "name": "libssl-3-x64.dll",
+          "bytes": 1599280,
+          "sha256": "167a7e7db94acabe59de0022f206674569e77873fa1572513dcff08abd26c379"
+        },
+        {
+          "name": "codex-rejected-cas.pem",
+          "bytes": 906,
+          "sha256": "c916ce1b14ed8ca69e9b5c9fab22799a900dd610d6d4ec9b1347f4fd48e53718"
+        }
+      ]
+    }
+  },
+  "frozenFunctional": {
+    "onedir": "passed: runtime, render, fonts, PDF transforms, ONNX OCR/search",
+    "onefile": "passed: renamed EXE, embedded engine, forms/shared fields/Korean entry, en-US/ja-JP, update and restore"
+  },
+  "packaging": {
+    "installer": "Inno Setup compile passed; packaged onedir EXE matches tested Store-v4 EXE",
+    "folderPortable": "archived tested onedir folder with current release documents and shell command helpers",
+    "sourceArchive": "340 entries; source package smoke passed; Store build scripts and privacy policy included",
+    "msix": "388 files and 5772 blocks verified in immutable Store candidate; SHA-256 unchanged"
+  },
+  "licenseActivation": {
+    "frozenOnedir": "User entered own key directly into isolated final-v4 profile; real activation and one success notice before close confirmed.",
+    "dpapi": "Encrypted license reloaded successfully; original user license preserved.",
+    "lifecycle": "Same isolated device check/deactivate/reactivate/check/deactivate passed with source Python LicenseStore/request; test registration released.",
+    "onefile": "Live invalid-key check plus connection/TLS error paths tested; no further real-key activation consumed.",
+    "security": "Authentication, certificate and hostname validation, redirect rejection and DPAPI retained; no bypass."
+  },
+  "preservation": {
+    "all_730_tests_passed": true,
+    "frozen_live_and_failure_paths_passed": true,
+    "manual_frozen_activation_and_notice_passed": true,
+    "msix_integrity_passed": true,
+    "msix_hash_matches": true,
+    "previous_msix_preserved": true,
+    "previous_folder_exe_preserved": true,
+    "original_encrypted_user_license_preserved": true,
+    "original_staged_changes_preserved": true,
+    "no_license_state_in_package": true,
+    "packaged_exe_is_tested_v4": true,
+    "packaged_tls_matches_tested_v4": true
+  },
+  "releaseChecks": {
+    "publicAssetDigests": "pending",
+    "liveUpdaterDownloads": "pending",
+    "eddProduct26818": "pending",
+    "githubActions": "not dispatched; source workflow is manual-only and publisher commits use [skip ci]"
+  },
+  "limits": [
+    "Microsoft Store submission is performed separately by the owner.",
+    "Store-signed installation and actual Microsoft review PC not tested.",
+    "External-purchase declaration was not changed; final read-only Partner Center verification remains with owner.",
+    "Existing installed user app was not replaced; installer was compiled, not installed over the user app.",
+    "EDD customer entitlement download/installation is separate from public updater and admin metadata verification."
+  ]
+}
