@@ -1,0 +1,69 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.7",
+  "sourceCommit": "3fdb77b3c614bb20f5665d6c95fb4168b0250b82",
+  "assets": {
+    "EoingPDF-2.4.7-Setup-x64.exe": {
+      "bytes": 121319872,
+      "sha256": "b0a04465464e92c6b54247c7551465ea514610285708d57c46437c1ce0284ab4"
+    },
+    "EoingPDF-2.4.7-portable.exe": {
+      "bytes": 159841878,
+      "sha256": "75d910e32738647bb800d9c633e2370bce4b3606fa2726feb41ce13e92af09bb"
+    },
+    "EoingPDF-2.4.7-portable.zip": {
+      "bytes": 163981481,
+      "sha256": "0ddc6aa320affbbd7494d07513b959a9ed84dbaafe4d33278c21b6ab0d012363"
+    },
+    "EoingPDF-2.4.7-source.zip": {
+      "bytes": 30832658,
+      "sha256": "842d0ceb893283a0f213e1d2f1ae02c954f648b0e84fd945bb44ce7c261908bc"
+    }
+  },
+  "regression": {
+    "fullSuite": "741 passed; final arrow size and standalone test import separately rechecked",
+    "ui": "Windows workspace and editor; three languages, two themes, two sizes; 125% and 150% icon checks",
+    "https": "onedir and onefile: live invalid key, connection refused and untrusted certificate rejected",
+    "frozen": "PDF, OCR/search, forms, Korean input, localization, update and restore passed",
+    "sourceZip": "344 entries; required files and no private binaries",
+    "viewerPerformance": {
+      "case": "daily",
+      "pages": 50,
+      "file_bytes": 40607,
+      "open_seconds": 0.1205,
+      "navigation_samples": 51,
+      "host": {
+        "system": "win32",
+        "python": "3.12.14",
+        "pymupdf": "1.27.2.3",
+        "logical_cpus": 16
+      },
+      "navigation_median_seconds": 0.0061,
+      "navigation_p95_seconds": 0.013,
+      "navigation_worst_seconds": 0.02,
+      "thumbnail_full_traversal_seconds": 0.1303,
+      "retained_thumbnail_cards": 24,
+      "thumbnail_cache_entries": 24,
+      "working_set_bytes": 110399488,
+      "peak_working_set_bytes": 112418816,
+      "original_sha256": "294a679b647089d060d76b5cd55bb918e4ea94365746966f6e06bb973c9a8306",
+      "original_unchanged": true,
+      "scope": "Fresh-process offscreen Qt; generated text / 150+ DPI scan-like JPEG PDFs; no app launch, OCR or network.",
+      "retained_thumbnail_pixmap_bytes": 1387136,
+      "working_set_after_close_bytes": 107069440,
+      "retained_thumbnail_cards_after_close": 0,
+      "page_raster_released_after_close": true
+    }
+  },
+  "pending": [
+    "GitHub asset hashes",
+    "public updater downloads",
+    "EDD synchronization",
+    "installation"
+  ],
+  "limits": [
+    "Microsoft Store submission and Store-signed install not performed",
+    "EDD customer entitlement download is a separate test",
+    "Performance measures generated PDFs in an offscreen process; no competitor comparison."
+  ]
+}
