@@ -1,0 +1,40 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.6",
+  "sourceCommit": "373c3a4bb1ce0d9407df8e5b70a97f25663ccdaf",
+  "assets": {
+    "EoingPDF-2.4.6-Setup-x64.exe": {
+      "bytes": 121324125,
+      "sha256": "b0bcdda01119ba710c96a05df5f91c3e7355296f56f98ea0937f421d4e27c4e1"
+    },
+    "EoingPDF-2.4.6-portable.exe": {
+      "bytes": 159837817,
+      "sha256": "401758eaeffb4d34447882f032c8d51912021b173fde2eed282cbba281327c31"
+    },
+    "EoingPDF-2.4.6-portable.zip": {
+      "bytes": 163979197,
+      "sha256": "ac6507bd8890b24bc7366ff049d7a6cfb494df39dacb8c70414a86a8a70d25ed"
+    },
+    "EoingPDF-2.4.6-source.zip": {
+      "bytes": 30830377,
+      "sha256": "2a97bb27a23a01edbcd5c21dc9c1da5ae9e117beb424ce139991ef11155248d5"
+    }
+  },
+  "regression": {
+    "fullSuite": "739 passed, 0 failures",
+    "ui": "Windows workspace and editor; three languages, two themes, two sizes; 125% and 150% icon checks",
+    "https": "onedir and onefile: live invalid key, connection refused and untrusted certificate rejected",
+    "frozen": "PDF, OCR/search, forms, Korean input, localization, update and restore passed",
+    "sourceZip": "342 entries; required files and no private binaries"
+  },
+  "pending": [
+    "GitHub asset hashes",
+    "public updater downloads",
+    "EDD synchronization",
+    "installation"
+  ],
+  "limits": [
+    "Microsoft Store submission and Store-signed install not performed",
+    "EDD customer entitlement download is a separate test"
+  ]
+}
