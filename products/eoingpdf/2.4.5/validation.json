@@ -1,0 +1,40 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.5",
+  "sourceCommit": "a328b34958fe836c931081c8ea3b3f7fdbcbbed3",
+  "assets": {
+    "EoingPDF-2.4.5-Setup-x64.exe": {
+      "bytes": 121321359,
+      "sha256": "341c15a3699fe68d0a7ac99759ccd149809f20373f1fd4ec1620bc487fec0220"
+    },
+    "EoingPDF-2.4.5-portable.exe": {
+      "bytes": 159840593,
+      "sha256": "1c81f5c3c7fc1a580a29948638cf63c097010a941ff078bae41c1e6e80d4383d"
+    },
+    "EoingPDF-2.4.5-portable.zip": {
+      "bytes": 163977834,
+      "sha256": "c601a6930a1894bc00d75c2436c5173bc7d008f8f8f71479400d1eb0b14f3017"
+    },
+    "EoingPDF-2.4.5-source.zip": {
+      "bytes": 30829414,
+      "sha256": "ffe1d979443fd54fbf1c8e9158159daad71277f326d6db61b9b918fecd5df343"
+    }
+  },
+  "regression": {
+    "fullSuite": "739 passed before final sidebar toggle; final sidebar separately verified in workspace UI test",
+    "ui": "Windows: three languages, two themes, two sizes; 125% and 150% icon tests; synthetic PDF and protected original",
+    "https": "onedir and onefile: live invalid key, connection refused and untrusted certificate rejected",
+    "frozen": "PDF, OCR/search, forms, Korean input, localization, update and restore passed",
+    "sourceZip": "341 entries; required files and no private binaries"
+  },
+  "pending": [
+    "GitHub asset hashes",
+    "public updater downloads",
+    "EDD synchronization",
+    "installation on user PC"
+  ],
+  "limits": [
+    "Microsoft Store submission and Store-signed install not performed",
+    "EDD customer entitlement download is a separate test"
+  ]
+}
