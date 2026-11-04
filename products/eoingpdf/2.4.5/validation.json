@@ -27,14 +27,46 @@
     "frozen": "PDF, OCR/search, forms, Korean input, localization, update and restore passed",
     "sourceZip": "341 entries; required files and no private binaries"
   },
-  "pending": [
-    "GitHub asset hashes",
-    "public updater downloads",
-    "EDD synchronization",
-    "installation on user PC"
-  ],
   "limits": [
     "Microsoft Store submission and Store-signed install not performed",
     "EDD customer entitlement download is a separate test"
-  ]
+  ],
+  "releaseChecks": {
+    "githubAssets": "All five assets matched local size and SHA-256 before publication.",
+    "updater": {
+      "ok": true,
+      "results": [
+        {
+          "kind": "installer",
+          "bytes": 121321359,
+          "sha256": "341c15a3699fe68d0a7ac99759ccd149809f20373f1fd4ec1620bc487fec0220"
+        },
+        {
+          "kind": "portable",
+          "bytes": 159840593,
+          "sha256": "1c81f5c3c7fc1a580a29948638cf63c097010a941ff078bae41c1e6e80d4383d"
+        }
+      ],
+      "scope": "Actual app updater and public downloads. License session and distribution form mocked; no license activation or installer execution."
+    },
+    "edd": {
+      "product": 26818,
+      "version": "2.4.5",
+      "asset": "EoingPDF-2.4.5-Setup-x64.exe",
+      "delivery": "READY",
+      "consistency": "READY",
+      "verification": "VERIFIED",
+      "bodySaved": true,
+      "entitlementDownloadTested": false
+    },
+    "installation": {
+      "version": "2.4.5",
+      "installerExit": 0,
+      "installedExecutableMatched": true,
+      "licenseUnchanged": true,
+      "previousInstallationBackedUp": true,
+      "installedHealthCheck": "passed"
+    },
+    "githubActions": "No runs for source, release metadata or update-feed commits; publisher commits use [skip ci]."
+  }
 }
