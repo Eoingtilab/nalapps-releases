@@ -1,0 +1,39 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.9",
+  "sourceCommit": "741d129",
+  "assets": {
+    "EoingPDF-2.4.9-Setup-x64.exe": {
+      "bytes": 121313818,
+      "sha256": "469a9d8fcafe12ac74cbef8b2a7b22841c9921d6f9bf4eb3b127e2fed2099720"
+    },
+    "EoingPDF-2.4.9-portable.exe": {
+      "bytes": 159839922,
+      "sha256": "0c70348c58c1b60eed61a983ae6ee25b19fbe9f9bc9f51971aa436cd54f92966"
+    },
+    "EoingPDF-2.4.9-portable.zip": {
+      "bytes": 160521982,
+      "sha256": "518d94e784dfdf83dc4fbf96ad7db13565b27382d778f01e2061aec02b04cfa7"
+    },
+    "EoingPDF-2.4.9-source.zip": {
+      "bytes": 30834532,
+      "sha256": "f070ab40ca3546aa36c954cfb59ffd9d583d2470caac35799e3656e7b61238e3"
+    }
+  },
+  "regression": {
+    "fullSuite": "743 passed",
+    "ui": "Windows: three languages, two themes, two sizes, 125% and 150% icon checks",
+    "https": "onedir and onefile live invalid key, connection refusal, untrusted certificate rejected",
+    "frozen": "PDF, search, forms and update restore passed"
+  },
+  "pending": [
+    "GitHub asset integrity",
+    "public updater",
+    "EDD synchronization",
+    "installation"
+  ],
+  "limits": [
+    "Microsoft Store submission and Store-signed installation not performed",
+    "Actual customer entitlement download is a separate test"
+  ]
+}
