@@ -1,0 +1,40 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.10",
+  "sourceCommit": "0f135a9",
+  "assets": {
+    "EoingPDF-2.4.10-Setup-x64.exe": {
+      "bytes": 121323646,
+      "sha256": "cf650fcfda09b81c8a25ace6879b54c25b0a6a4a783cb6ab0d05494a34c21377"
+    },
+    "EoingPDF-2.4.10-portable.exe": {
+      "bytes": 159841741,
+      "sha256": "24c1a10cc64f6204574ff239a0cf13cf3a1ebc9bbff7fc522799c8a84b8ca036"
+    },
+    "EoingPDF-2.4.10-portable.zip": {
+      "bytes": 160519776,
+      "sha256": "9d0084b4f05b23426680301a0c0d746fad356e2694d651542e277ecf3670538d"
+    },
+    "EoingPDF-2.4.10-source.zip": {
+      "bytes": 30834799,
+      "sha256": "f58e528e5a31e455419f135b2bf15729ac1d7bf90a69c0cd505e54bf09828e24"
+    }
+  },
+  "regression": {
+    "focused": "20 passed: workspace, localization, stamps, diagnostic naming",
+    "ui": "Windows workspace and editor; three languages, two themes, two sizes; 125% and 150% icon checks",
+    "https": "onedir and onefile: live invalid key, connection refusal, untrusted certificate rejected",
+    "frozen": "PDF, OCR/search, forms and update restore passed"
+  },
+  "pending": [
+    "GitHub asset integrity",
+    "public updater",
+    "EDD synchronization",
+    "installation"
+  ],
+  "limits": [
+    "Full suite not rerun for this small UI change",
+    "Microsoft Store submission and Store-signed installation not performed",
+    "Actual customer entitlement download is a separate test"
+  ]
+}
