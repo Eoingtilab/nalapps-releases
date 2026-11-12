@@ -1,0 +1,42 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.4.13",
+  "sourceCommit": "5c446c5",
+  "assets": {
+    "EoingPDF-2.4.13-Setup-x64.exe": {
+      "bytes": 121311432,
+      "sha256": "bcff33675ecd197250fec0587aab5800851f76dab1b5e0f59ef9fdb129a6b75e"
+    },
+    "EoingPDF-2.4.13-portable.exe": {
+      "bytes": 159843659,
+      "sha256": "e441cccb828fca503416e8bbfc638515ec5aad1be5424f68d73af3f4be58980c"
+    },
+    "EoingPDF-2.4.13-portable.zip": {
+      "bytes": 160522293,
+      "sha256": "34f293099b2799c473ff324e426efab6f40d0f7aba86038b38cef520cddb6af0"
+    },
+    "EoingPDF-2.4.13-source.zip": {
+      "bytes": 30839132,
+      "sha256": "33f55222f0192e653a6e13f7a41f20ef395fae9e90eb682f3c497012dbba6f17"
+    }
+  },
+  "regression": {
+    "keyboard": "Windows QTest F/E/V/W across Korean, English, Japanese",
+    "ui": "Windows workspace; three languages, two themes, two sizes; 150% icon checks",
+    "install": "Inno compile and isolated shell hook 3 passed",
+    "firstRun": "onedir and onefile, isolated profile: no key or license state needed",
+    "frozen": "PDF and OCR/search passed"
+  },
+  "pending": [
+    "GitHub asset integrity",
+    "public updater",
+    "EDD synchronization",
+    "installation"
+  ],
+  "limits": [
+    "Full suite not rerun",
+    "Windows Settings default PDF selection requires user action and was not changed during tests",
+    "Microsoft Store submission and Store-signed installation not performed",
+    "Actual customer entitlement download is a separate test"
+  ]
+}
