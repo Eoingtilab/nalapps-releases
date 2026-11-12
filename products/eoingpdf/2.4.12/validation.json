@@ -26,14 +26,14 @@
     "firstRun": "onedir and onefile, isolated profile: no key or license state needed",
     "frozen": "PDF, OCR/search, forms and update restore passed"
   },
-  "pending": [
-    "GitHub asset integrity",
-    "public updater",
-    "EDD synchronization",
-    "installation"
-  ],
   "limits": [
     "Microsoft Store submission and Store-signed installation not performed",
     "Actual customer entitlement download is a separate test"
-  ]
+  ],
+  "releaseChecks": {
+    "githubAssets": "Uploaded asset sizes and SHA-256 matched local artifacts.",
+    "updater": "Public latest.json reports 2.4.12 and published installer hash.",
+    "edd": "Product 26818 reports READY and VERIFIED for 2.4.12; obsolete activation requirement removed from product text.",
+    "installation": "Prior installation backed up; installer exit 0; installed executable matched build; health and isolated first launch passed; existing license file unchanged."
+  }
 }
