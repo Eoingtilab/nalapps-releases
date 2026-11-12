@@ -26,15 +26,15 @@
     "https": "onedir and onefile: live invalid key, connection refusal, untrusted certificate rejected",
     "frozen": "PDF, OCR/search, forms and update restore passed"
   },
-  "pending": [
-    "GitHub asset integrity",
-    "public updater",
-    "EDD synchronization",
-    "installation"
-  ],
   "limits": [
     "Full suite not rerun",
     "Microsoft Store submission and Store-signed installation not performed",
     "Actual customer entitlement download is a separate test"
-  ]
+  ],
+  "releaseChecks": {
+    "githubAssets": "Uploaded asset sizes and SHA-256 matched local artifacts.",
+    "updater": "Public latest.json reports 2.4.11 and published installer hash.",
+    "edd": "Product 26818 reports READY and VERIFIED for 2.4.11; public product text updated.",
+    "installation": "Prior installation backed up; installer exit 0; installed executable matched build and health check passed."
+  }
 }
