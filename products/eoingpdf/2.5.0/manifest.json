@@ -1,0 +1,15 @@
+{
+  "productId": "eoingpdf",
+  "title": "어잉PDF",
+  "version": "2.5.0",
+  "channel": "stable",
+  "versionTag": "utility-eoingpdf-v2.5.0",
+  "downloadUrl": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingpdf-v2.5.0/EoingPDF-2.5.0-Setup-x64.exe",
+  "asset": "EoingPDF-2.5.0-Setup-x64.exe",
+  "sha256": "3be3435963007987bc497856e2221503e2cd9fc0d1fc5d4ccc01379523b89b5a",
+  "portableDownloadUrl": "https://github.com/Eoingtilab/nalapps-releases/releases/download/utility-eoingpdf-v2.5.0/EoingPDF-2.5.0-portable.exe",
+  "portableAsset": "EoingPDF-2.5.0-portable.exe",
+  "portableSha256": "f6d167d2c2917bb9fd37495b338ab3d7a0fa462d6101bbebe0aa823d0de85d18",
+  "releaseNotesUrl": "https://github.com/Eoingtilab/nalapps-releases/blob/main/products/eoingpdf/2.5.0/release-notes.md",
+  "mandatory": false
+}
