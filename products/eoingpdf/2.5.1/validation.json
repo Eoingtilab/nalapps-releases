@@ -1,0 +1,38 @@
+{
+  "productId": "eoingpdf",
+  "version": "2.5.1",
+  "sourceCommit": "ccd443e",
+  "assets": {
+    "EoingPDF-2.5.1-Setup-x64.exe": {
+      "bytes": 120848131,
+      "sha256": "71990d0818f5c9b7064f84a96460b12bee6ac6a18602bb1a5631a84c710274e3"
+    },
+    "EoingPDF-2.5.1-portable.exe": {
+      "bytes": 158873864,
+      "sha256": "3302f0af09b04afed93ac71f613e630f7b173b64559118b8ea49f465a639fe22"
+    },
+    "EoingPDF-2.5.1-portable.zip": {
+      "bytes": 159541216,
+      "sha256": "2168c4849e7e180a4e050ba5fa9da722e4e2bdba837a64a09ec200ab20c73fc7"
+    },
+    "EoingPDF-2.5.1-source.zip": {
+      "bytes": 30930634,
+      "sha256": "a1597589230f4752108d3c7ccbeb7a72068b537df9bcaf36459222a2e9453772"
+    },
+    "EoingPDF-2.5.1-Store-x64.msix": {
+      "bytes": 164603624,
+      "sha256": "a32bf43e933e2b7d3f520b194a329481a478a5c9e6711bdb5c1815420020729d"
+    }
+  },
+  "regression": {
+    "pytest": "749 passed, 19 skipped (build_release.ps1); 44 unit tests passed",
+    "uiSmokes": "workspace_ui_smoke, settings_ui_smoke, and icon_ui_smoke (125%, 150% DPI) passed",
+    "frozen": "PyInstaller onedir, single-file portable, forms, localization, WinRT OCR, ONNX search and update restore smoke gates passed",
+    "install": "Native Visual Studio C++ DLLs, ShellBridge, and Inno Setup 6 Setup-x64 compile passed",
+    "storeMsix": "Store MSIX x64 2.5.1.0 generated via package_store_msix.py and makeappx.exe"
+  },
+  "limits": [
+    "Windows Settings default PDF association requires user action",
+    "Microsoft Partner Center MSIX upload and Store certification signing are separate steps"
+  ]
+}
